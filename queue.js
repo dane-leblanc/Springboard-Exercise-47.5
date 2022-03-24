@@ -32,20 +32,31 @@ class Queue {
   /** dequeue(): remove the node from the start of the queue
    * and return its value. Should throw an error if the queue is empty. */
 
-  dequeue() {}
+  dequeue() {
+    if (this.size === 0) {
+      throw new Error("Queue is empty");
+    }
+    let firstVal = this.first.val;
+    this.first = this.first.next;
+    this.size--;
+    return firstVal;
+  }
 
   /** peek(): return the value of the first node in the queue. */
 
-  peek() {}
+  peek() {
+    return this.first.val;
+  }
 
   /** isEmpty(): return true if the queue is empty, otherwise false */
 
-  isEmpty() {}
+  isEmpty() {
+    if (this.size === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
-
-let q = new Queue();
-q.enqueue(10);
-
-console.log(q);
 
 module.exports = Queue;
